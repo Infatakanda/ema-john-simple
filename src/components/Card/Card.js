@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Card = (props) => {
     const card = props.card;
     // const total = card.reduce((total, prd) => total + prd.price, 0);
@@ -7,7 +8,8 @@ const Card = (props) => {
     let total = 0;
     for(let i = 0; i< card.length; i++){
         const product = card[i];
-        total = total + product.price;
+        total = total + product.price * product.quantity;
+        debugger;
     }
 
     let shipping = 0;
@@ -36,7 +38,11 @@ const Card = (props) => {
             <p>Product Price: {formatNumber(total)} </p>
             <p><small>Shipping Cost : {shipping}</small></p>
             <p><small>Tax + VAT : {tax}</small></p>
-             <p>Total Price: {grandTotal}</p>
+             <p>Total Price: {grandTotal}</p> 
+             <br/>
+             {
+                 props.children
+             }
         </div>
     );
 };
